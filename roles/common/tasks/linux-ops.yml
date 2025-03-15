@@ -34,7 +34,7 @@
   become: true
 
 - name: create git commit 
-  shell: cd /etc && git add pacman.conf makepkg.conf && git commit -m "add some files to repo"
+  shell: cd /etc && pwd && git add pacman.conf makepkg.conf && git commit -m "add some files to repo"
   become: true
 
 - name: set time and date
