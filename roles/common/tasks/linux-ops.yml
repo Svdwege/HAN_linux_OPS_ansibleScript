@@ -58,12 +58,22 @@
   #  shell: cd /etc && git add sudoers && git commit -m "modified sudoers file"
   #  become: true
 
+- name: copy bashrc to temp location
+  become: true
+  copy: 
+   src: etc/bash.bashrc
+   dest: /tmp/bash.bashrc
+   force: true
+   owner: root
+   group: root
+
 - name:  export man and ls colours
-  shell: cat etc/bash.bashrc >> /etc/bash.bashrc
+  shell: cat /tmp/bash.bashrc >> /etc/bash.bashrc
   become: true
-- name: create git commit 
-  shell: cd /etc && git add bash.bashrc && git commit -m "modified bashrc in /etc"
-  become: true
+
+  #- name: create git commit 
+  #  shell: cd /etc && git add bash.bashrc && git commit -m "modified bashrc in /etc"
+  #  become: true
 
 
 - name:  export root prompt
