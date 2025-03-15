@@ -149,6 +149,11 @@
    owner: root
    group: root
 
+- name: remove pacnew files
+  shell: rm -r /tmp/tempAUR
+  ignore_errors: true
+  become: true
+
 - name: create aur directory
   file: path=/tmp/tempAUR
         state=directory
