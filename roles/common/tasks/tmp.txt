@@ -1,0 +1,71 @@
+
+
+- name: create cd/etc in root bashrc
+  shell: echo "cd /etc" >>/root/.bashrc
+  sudo: true
+  sudo_user: root
+
+- name: create git username 
+  shell: git config --global user.name "root"
+  sudo: true
+  sudo_user: root
+
+- name: create git email 
+  shell: git config --global user.email "root@RPI"
+  sudo: true
+  sudo_user: root
+
+- name: create git repo /etc
+  shell: cd /etc && git init
+  sudo: true
+  sudo_user: root
+
+- name: create git commit 
+  shell: git add pacman.conf makepkg.conf && git commit -m "add some files to repo"
+  sudo: true
+  sudo_user: root
+
+- name: set time and date
+  shell: timedatectl set-timezone Europe/Amsterdam && timedatectl status
+  sudo: true
+  sudo_user: root
+
+- name: create git commit 
+  shell: git add sudoers && git commit -m "orig sudoers file"
+  sudo: true
+  sudo_user: root
+
+- name: allow sudo | uncomment wheel
+  replace:
+    path: /etc/sudoers
+    regexp: '{{ item.regexp }}'
+    replace: '{{ item.replace }}'
+  with_items:
+    - { regexp: '^# wheel ALL=(ALL) ALL$', replace: '%wheel ALL=(ALL) ALL' }
+  sudo: true
+  sudo_user: root
+
+- name: create git commit 
+  shell: git add sudoers && git commit -m "modified sudoers file"
+  sudo: true
+  sudo_user: root
+
+- name: create git commit 
+  shell: git add sudoers && git commit -m "modified sudoers file"
+  sudo: true
+  sudo_user: root
+
+- name:  export man and ls colours
+  shell: cat files/etc/bash.bashrc >> /etc/bash.bashrc
+  sudo: true
+  sudo_user: root
+
+
+- name:  export root prompt
+  shell: echo 'export PS1="[\[\033[1;41m\]\u\[\033[0;1;7m\]@\[\033[0;1;44m\]\h\[\033[0m\] \W]# "'>> /root/.bashrc
+  sudo: true
+  sudo_user: root
+
+- name: export prompt
+  shell: echo 'export PS1="[\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;34m\]\h\[\033[0m\] \W]\$ "'>> /home/opsstudent/.bashrc
+
