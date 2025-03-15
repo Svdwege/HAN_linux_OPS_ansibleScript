@@ -130,6 +130,7 @@
 
 - name: remove pacnew files
   shell: rm /etc/*.pacnew
+  ignore_errors: true
   become: true
 
 - name: starting cronie
