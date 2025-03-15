@@ -196,15 +196,17 @@
   shell: modprobe i2c-dev
   become: true
 
-- name: assert existance of i2c-dev
+- name: assert existance of i2cdev
     ansible.builtin.stat:
       path: /dev/i2c-13
     register: p
-
-- debug:
+- name: i2c exists
+  debug:
     msg: "i2c devices exists"
   when: p.stat.exists
-- debug:
+
+- name: i2c doesnt exists
+  debug:
     msg: "i2c not found"
   when: p.stat.exists == False
 
