@@ -1,0 +1,106 @@
+# answers.txt
+
+## Q1:
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root       6.8G  2.1G  4.4G  32% /
+devtmpfs        2.0G     0  2.0G   0% /dev
+tmpfs           2.0G     0  2.0G   0% /dev/shm
+tmpfs           798M  728K  798M   1% /run
+tmpfs           2.0G     0  2.0G   0% /tmp
+/dev/mmcblk0p1  253M   57M  196M  23% /boot
+tmpfs           399M     0  399M   0% /run/user/1000
+tmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+tmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+
+## Q2:
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        7093868 2140564   4571608  32% /
+devtmpfs         2008784       0   2008784   0% /dev
+tmpfs            2042576       0   2042576   0% /dev/shm
+tmpfs             817032     728    816304   1% /run
+tmpfs            2042580       0   2042580   0% /tmp
+/dev/mmcblk0p1    258095   58219    199876  23% /boot
+tmpfs             408512       0    408512   0% /run/user/1000
+tmpfs               1024       0      1024   0% /run/credentials/systemd-resolved.service
+tmpfs               1024       0      1024   0% /run/credentials/systemd-journald.service
+
+
+
+## Q3:
+Mem:           3.9Gi        76Mi       3.7Gi       0.0Ki        97Mi       3.8Gi
+Swap:             0B          0B          0B
+
+## Q4:
+when installing pacman gives the following warning:
+warning: emacs-nox-30.1-3 is up to date -- reinstalling
+
+## Q5:
+git version 2.48.1
+## Q6:
+commit 4da57b3e12c3637b9a44b9e6b56e8dc0d111fca7 (HEAD -> master)
+Author: root <root@RPI>
+Date:   Sat Mar 15 11:43:48 2025 +0100
+
+    modified sudoers and bash.bashrc
+
+commit 8f61293e2aaa25074aef538177b6c04ac60dc8c4
+Author: root <root@RPI>
+Date:   Sat Mar 15 11:31:26 2025 +0100
+
+    orig sudoers file
+
+commit c859767213dd8bf8ca9465074b7a6d98fb7f1349
+Author: root <root@RPI>
+Date:   Sat Mar 15 10:31:26 2025 +0000
+
+    add some files to repo
+
+## Q7: 
+    Sat Mar 15 11:43:48 2025 +0100
+    none have been pushed yet
+
+## Q8: 
+it now shows origin/main next to the last commit pushed to the server
+
+---- 5 
+
+## Q9:
+It was on first boot since this was made on a raspberry pi 5 where uboot needed to be removed and overwritten with an update.
+
+## Q10:
+TODO install something with YAOURT as ROOT
+
+
+## Q11:
+this account is currently not available
+
+## Q12:
+red and purple
+
+## Q13:
+purple
+
+## Q14
+-k
+
+
+ 
+## Q15:
+https://github.com/han-ese/Arch-RPi.git
+
+## Q16:
+- bash
+- python-netifaces
+- python-sense-hat
+- python3
+
+## Q17: 
+at boot:    "booting {hostname} (Linux)"
+at shutdown:"shutting down {hostname}"
+
+
+## Q18: 
+It print which user logged in
+
+## Q19: 
+"User root logged in"

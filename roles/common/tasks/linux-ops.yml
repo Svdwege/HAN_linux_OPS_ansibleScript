@@ -9,6 +9,24 @@
    group: root
    mode: u+rwx,g+r,o+r
 
+- name: install basic utils, shells, apps
+  community.general.pacman:
+    state: present
+    name:
+      - base-devel
+      - chrony
+      - chronie
+      - git
+      - yajl
+      - wget 
+      - bash-completion
+      - atop
+      - htop
+      - mlocate
+      - wget
+      - colordiff
+      - etc-update
+
 - name: create export in root bashrc
   shell: echo "@reboot /usr/local/sbin/sync-clock-at-boot" >>/root/.bashrc
   become: true
@@ -71,16 +89,126 @@
   shell: cat /tmp/bash.bashrc >> /etc/bash.bashrc
   become: true
 
-  #- name: create git commit 
-  #  shell: cd /etc && git add bash.bashrc && git commit -m "modified bashrc in /etc"
-  #  become: true
+- name: copy bashrc to temp location
+  become: true
+  copy: 
+   src: root/bashrc
+   dest: /root/.bashrc
+   force: true
+   owner: root
+   group: root
 
+- name: copy bashrc to temp location
+  become: true
+  copy: 
+   src: home/opsstudent/bashrc
+   dest: /home/opsstudent/.bashrc
+   force: true
+   owner: opsstudent
+   group: opsstudent
 
-- name:  export root prompt
-  shell: echo 'export PS1="[\[\033[1;41m\]\u\[\033[0;1;7m\]@\[\033[0;1;44m\]\h\[\033[0m\] \W]# "'>> /root/.bashrc
+- name: setup time and date A24
+  shell: timedatectl set-timezone Europe/Amsterdam && timedatectl status
   become: true
 
-- name: export prompt
-  shell: echo 'export PS1="[\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;34m\]\h\[\033[0m\] \W]\$ "'>> /home/opsstudent/.bashrc
+- name: Enable pacman colourised output and verbose package lists
+  replace:
+    path: /etc/pacman.conf
+    regexp: '{{ item.regexp }}'
+    replace: '{{ item.replace }}'
+  with_items:
+    - { regexp: '^#Color$', replace: 'Color' }
+    - { regexp: 'MAKEFLAGS="-j.*"', replace: 'MAKEFLAGS="-j$(nproc)"' }
+
+- name: setup time and date
+  shell: pacman -Ss emacs
+  become: false
+
+- name: remove pacnew files
+  shell: rm /etc/*.pacnew
   become: true
+
+- name: starting cronie
+  ansible.builtin.systemd_service:
+    name: cronie
+    enabled: true
+    state: started
+
+
+- name: copy wpa_supplicant.conf to etc/wpa_supplicant/wpa_supplicant.conf
+  become: true
+  copy: 
+   src: etc/wpa_supplicant/wpa_supplicant.conf
+   dest: /etc/wpa_supplicant/wpa_supplicant.conf
+   force: true
+   owner: root
+   group: root
+
+- name: create aur directory
+  file: path=/tmp/tempAUR
+        state=directory
+        owner={{ username }}
+        group={{ username }}
+
+  ## package-query install
+- name: download source tarball for package-query
+  shell: cd /tmp/tempAUR && wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
+
+- name: unpack tarball package-query
+  shell: cd /tmp/tempAUR && tar xfz package-query.tar.gz
+
+- name: package-query makepkg
+  shell: cd /tmp/tempAUR/package-query && makepkg
+
+- name: install package-query
+  become: true
+  shell: cd /tmp/tempAUR/package-query && pacman -U package-query*.pkg.tar.xz
+  
+  ## yaourt install
+- name: download source tarball for yaourt
+  shell: cd /tmp/tempAUR && wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
+
+- name: unpack tarball yaourt
+  shell: cd /tmp/tempAUR && tar xfz yaourt.tar.gz
+
+- name: yaourt makepkg
+  shell: cd /tmp/tempAUR/yaourt && makepkg
+
+- name: install yaourt
+  become: true
+  shell: cd /tmp/tempAUR/yaourt && pacman -U yaourt*.pkg.tar.xz
+
+- name: create git commit 
+  shell: cd /etc && git add passwd shadow group gshadow && git commit -m "added files from etc"
+  become: true
+
+- name: block user alarm  
+  become: true
+  shell: usermod -s /usr/sbin/nologin alarm
+
+
+
+- name: sensehat i2c_dev modprobe
+  shell: modprobe i2c-dev
+  become: true
+
+- name: assert existance of i2c-dev
+    stat:
+    path: /dev/i2c-*
+    register: p
+
+- debug:
+    msg: "i2c devices exists"
+  when: p.stat.exists
+- debug:
+    msg: "i2c not found"
+  when: p.stat.exists == False
+
+- name: sensehat i2c_dev modprobe
+  shell: echo "i2c-dev" >> /etc/modules-load.d/raspberrypi.conf
+  become: true
+
+
+
+
 

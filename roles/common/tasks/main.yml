@@ -1,5 +1,5 @@
-- name: pre install questions
-  shell: df -h >> /root/answers.txt && free -h >> /root/answers.txt 
+#- name: pre install questions
+#  shell: df -h >> /root/answers.txt && free -h >> /root/answers.txt 
 
 - name: install linux-ops.yml
   ansible.builtin.include_tasks: 
