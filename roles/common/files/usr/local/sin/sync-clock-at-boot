@@ -1,0 +1,4 @@
+#!/bin/sh
+sleep 20 #sleep for 20s to get an IP address first when ran at boot
+chronyd -q 'server 185.255.55.20 iburst' # sync the system clock
+

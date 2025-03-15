@@ -6,6 +6,7 @@
   with_items:
     - { regexp: '^#Color$', replace: 'Color' }
     - { regexp: '^#VerbosePkgLists$', replace: 'VerbosePkgLists' }
+    - { regexp: 'MAKEFLAGS="-j.*"', replace: 'MAKEFLAGS="-j$(nproc)"' }
 
 - name: Enable repositories
   replace:
