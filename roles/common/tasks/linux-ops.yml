@@ -28,6 +28,10 @@
       - etc-update
 
 - name: create export in root bashrc
+  shell: echo "ansiblebrick" > /etc/hostname
+  become: true
+
+- name: create export in root bashrc
   shell: echo "@reboot /usr/local/sbin/sync-clock-at-boot" >>/root/.bashrc
   become: true
 
