@@ -11,8 +11,7 @@
 
 - name: create export in root bashrc
   shell: echo "@reboot /usr/local/sbin/sync-clock-at-boot" >>/root/.bashrc
-  sudo: true
-  sudo_user: root
+  become: true
 
 - name: create export in root bashrc
   shell: echo "export EDITOR='emacs'" >>/root/.bashrc
