@@ -34,7 +34,7 @@
   become: true
 
 - name: create git commit 
-  shell: git add pacman.conf makepkg.conf && git commit -m "add some files to repo"
+  shell: cd /etc && git add pacman.conf makepkg.conf && git commit -m "add some files to repo"
   become: true
 
 - name: set time and date
@@ -42,7 +42,7 @@
   become: true
 
 - name: create git commit 
-  shell: git add sudoers && git commit -m "orig sudoers file"
+  shell: cd /etc && git add sudoers && git commit -m "orig sudoers file"
   become: true
 
 - name: allow sudo | uncomment wheel
@@ -55,15 +55,14 @@
     - { regexp: '^# wheel ALL=(ALL) ALL$', replace: '%wheel ALL=(ALL) ALL' }
 
 - name: create git commit 
-  shell: git add sudoers && git commit -m "modified sudoers file"
-  become: true
-
-- name: create git commit 
-  shell: git add sudoers && git commit -m "modified sudoers file"
+  shell: cd /etc && git add sudoers && git commit -m "modified sudoers file"
   become: true
 
 - name:  export man and ls colours
   shell: cat etc/bash.bashrc >> /etc/bash.bashrc
+  become: true
+- name: create git commit 
+  shell: cd /etc && git add bash.bashrc && git commit -m "modified bashrc in /etc"
   become: true
 
 
