@@ -1,0 +1,188 @@
+ls
+nano
+exit
+pacman-key-init
+pacman-key --init
+pacman-key --populate archlinuxarm
+time
+timedatectl --hlep
+timedatectl --help
+timedatectl status
+timedatectl list-timezonex
+timedatectl list-timezones
+timedatectl set-timezone Europe/Amsterdam
+timedatectl status
+vi /etc/pacman.d/mirrorlist 
+bash
+exit
+l
+ls
+mv answers.txt /root/
+cd /root/
+l
+ls
+alias l='ls -alG'
+l
+cat .ssh/
+ls
+df -h
+df -h | head -n 2 >> answers.txt 
+vi answers.txt 
+l
+free -h
+free -h >> answers.txt 
+l
+vi 
+vi answers.txt 
+passwd
+exit
+vi /etc/pacman.d/mirrorlist 
+pacman-key -u
+pacman-key --populate
+pacman -Sy
+pacman -S neovim
+pacman -S emacs-nox
+pacman -S neovim
+nvim
+pacman -Sd binutils gcc gcc-libs
+nvim 
+vi /etc/pacman.d/mirrorlist 
+pacman -S neovim
+nvim 
+pacman --help
+pacman -R nvim 
+pacman -R neovim
+pacman -Ss emacs
+pacman -Ss emacs-nox
+pacman -S emacs-nox
+vi /root/.bashrc
+ls
+pacman -
+pacman -S git
+pacman -Syu
+pacman -R linux-aarch64 uboot-raspberrypi
+pacman -Syu --overwrite "/boot/*" linux-rpi
+reboot 
+pacman -S sudo nvim
+pacman -S sudo neovim
+nvim
+cd /etc/
+l
+ls
+git --version
+echo "Q4.2">>/root/answers.txt 
+git --version >> /root/answers.txt 
+git init
+git add .
+git commit -m "base commit"
+git config --global user.email "s.vandewege@student.han.nl"
+git config --global user.name "Sjoerd van de Wege"
+git commit -m "base commit"
+git status
+ls
+ll
+ls
+git add sudoers 
+git commit -m "add original sudoers file to repo"
+touch sudoers
+git commit -m "add original sudoers file to repo"
+git add sudoers 
+git commit -m "add original sudoers file to repo"
+ls
+git log
+nvim sudoers
+ls
+git add .
+l
+git stus
+git satus
+git status
+git commit -m "add original sudoers file to repo"
+ls
+git diff 
+exit
+l
+ls
+visudo 
+export TERM=xterm
+nvim sudoers
+chmod a-w sudoers
+l
+ls
+ls -alg
+exit
+exit
+exit
+/usr/bin/nologin >> /root/answers.txt 
+vi /root/answers.txt 
+history | grep export
+export TERM=xterm
+vi
+nvim /root/answers.txt 
+cd ~/
+l
+ls
+git init
+git add .
+git commit -m "q7.1 answered"
+rm .git -rf
+git init
+git add answers.txt 
+git commit -m "q7.1 answered"
+l
+ls
+cd /etc
+l
+ls
+nvim ssh/sshd_config
+git add ssh
+exit
+exit
+ls
+souce .bashrc
+source .bashrc
+echo "Q8.1\nred and purple\n\n"
+echo "Q8.1\nred and purple\n\n">> answers.txt 
+cat answers.txt 
+nvim .
+exit
+nvim answers.txt 
+man man
+nvim .
+man man
+man man
+nvim .
+man man
+nvim .
+man man
+nvim .
+scp ./answers.txt sjoerd@192.168.11.75:/tmp
+python3 -m http.server
+exit
+ls
+cd 
+echo "cd /etc/" >> .bashrc 
+cat .bashrc 
+cat .bashrc | tail -n2 | head -n1
+cat .bashrc | tail -n2 | head -n1 >> /home/opsstudent/editexport
+exit
+ls
+cd /root
+ls
+ls -al
+alias emacs=nvim
+emacs .bashrc
+history
+ls
+ls -al
+echo "alias less='less -Si'" >> /etc/bash.bashrc 
+ls
+cat .bash_history | less
+exit
+bash -i
+exit
+cat /root/.bashrc
+ls
+ls -al
+cat .ssh/known_hosts 
+exit
