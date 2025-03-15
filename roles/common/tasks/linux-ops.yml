@@ -15,7 +15,7 @@
     name:
       - base-devel
       - chrony
-      - chronie
+      - cronie
       - git
       - yajl
       - wget 
