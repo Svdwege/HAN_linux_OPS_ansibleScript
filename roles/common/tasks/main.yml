@@ -1,6 +1,7 @@
 - name: pre install questions
   shell: df -h >> /root/answers.txt && free -h >> /root/answers.txt 
 
-- include: linux-ops.yml
+- name: linux-ops tasks
+  ansible.buildin.include_tasks: linux-ops.yml
 
 
