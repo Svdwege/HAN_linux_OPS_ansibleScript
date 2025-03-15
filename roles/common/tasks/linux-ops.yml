@@ -198,7 +198,7 @@
 
 - name: assert existance of i2c-dev
     ansible.builtin.stat:
-      path: /dev/i2c-*
+      path: /dev/i2c-13
     register: p
 
 - debug:
