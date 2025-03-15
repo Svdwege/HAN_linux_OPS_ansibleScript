@@ -62,7 +62,6 @@ Date:   Sat Mar 15 10:31:26 2025 +0000
 ## Q8: 
 it now shows origin/main next to the last commit pushed to the server
 
----- 5 
 
 ## Q9:
 It was on first boot since this was made on a raspberry pi 5 where uboot needed to be removed and overwritten with an update.
@@ -104,3 +103,11 @@ It print which user logged in
 
 ## Q19: 
 "User root logged in"
+
+
+
+## Q20: 
+
+## Q21: 
+it overwrites the logfile
+

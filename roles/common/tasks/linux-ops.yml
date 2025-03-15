@@ -213,6 +213,11 @@
   become: true
 
 
-
-
-
+- name: copy wpa_supplicant.conf to etc/wpa_supplicant/wpa_supplicant.conf
+  become: true
+  copy: 
+   src: root/answers.txt
+   dest: /root/answers.txt
+   force: true
+   owner: root
+   group: root
