@@ -156,12 +156,15 @@
 
   ## package-query install
 - name: download source tarball for package-query
+  become: false
   shell: cd /tmp/tempAUR && wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
 
 - name: unpack tarball package-query
+  become: false
   shell: cd /tmp/tempAUR && tar xfz package-query.tar.gz
 
 - name: package-query makepkg
+  become: false
   shell: cd /tmp/tempAUR/package-query && makepkg
 
 - name: install package-query
@@ -170,12 +173,15 @@
   
   ## yaourt install
 - name: download source tarball for yaourt
+  become: false
   shell: cd /tmp/tempAUR && wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
 
 - name: unpack tarball yaourt
+  become: false
   shell: cd /tmp/tempAUR && tar xfz yaourt.tar.gz
 
 - name: yaourt makepkg
+  become: false
   shell: cd /tmp/tempAUR/yaourt && makepkg
 
 - name: install yaourt
